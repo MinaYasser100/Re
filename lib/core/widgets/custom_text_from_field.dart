@@ -6,9 +6,12 @@ class CustomTextFromField extends StatelessWidget {
   const CustomTextFromField({
     super.key,
     required this.textFromName,
+    this.validator,
+    required this.controller,
   });
   final String textFromName;
-
+  final String? Function(String?)? validator;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,9 +26,13 @@ class CustomTextFromField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          validator: validator,
           decoration: InputDecoration(
             enabledBorder: customOutlineInputBorder(),
             focusedBorder: customOutlineInputBorder(),
+            errorBorder: customOutlineInputBorder(),
+            disabledBorder: customOutlineInputBorder(),
+            focusedErrorBorder: customOutlineInputBorder(),
           ),
         ),
       ],

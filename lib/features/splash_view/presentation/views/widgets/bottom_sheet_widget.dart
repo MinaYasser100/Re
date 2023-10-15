@@ -11,27 +11,29 @@ class BottomSheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SplashCubit, SplashStates>(builder: (context, state) {
-      return Column(
-        children: [
-          SizedBox(
-            height: 50,
-            child: ListView.builder(
-              itemCount: 2,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => BottomSheetButton(
-                index: index,
-                text: BlocProvider.of<SplashCubit>(context).nameText[index],
-                textColor: BlocProvider.of<SplashCubit>(context)
-                    .changeTextColor(index),
-                onPressed: () {
-                  BlocProvider.of<SplashCubit>(context).changeIndex(index);
-                },
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+              child: ListView.builder(
+                itemCount: 2,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => BottomSheetButton(
+                  index: index,
+                  text: BlocProvider.of<SplashCubit>(context).nameText[index],
+                  textColor: BlocProvider.of<SplashCubit>(context)
+                      .changeTextColor(index),
+                  onPressed: () {
+                    BlocProvider.of<SplashCubit>(context).changeIndex(index);
+                  },
+                ),
               ),
             ),
-          ),
-          BlocProvider.of<SplashCubit>(context)
-              .screens[BlocProvider.of<SplashCubit>(context).currentIndex],
-        ],
+            BlocProvider.of<SplashCubit>(context)
+                .screens[BlocProvider.of<SplashCubit>(context).currentIndex],
+          ],
+        ),
       );
     });
   }

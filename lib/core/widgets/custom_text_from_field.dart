@@ -26,6 +26,7 @@ class CustomTextFromField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          controller: controller,
           validator: validator,
           decoration: InputDecoration(
             enabledBorder: customOutlineInputBorder(),

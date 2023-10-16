@@ -16,38 +16,41 @@ class ButtonsSectionSplashView extends StatelessWidget {
   final Size mediaQuerySize;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SplashCubit, SplashStates>(builder: (context, state) {
-      return Column(
-        children: [
-          CustomButtonApp(
-            width: mediaQuerySize.width * 0.7,
-            text: 'Create Account',
-            onPressed: () {
-              bottomSheet(
-                context: context,
-                widget: const BottomSheetWidget(),
-              );
-              BlocProvider.of<SplashCubit>(context).currentIndex = 0;
-            },
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          CustomButtonApp(
-            width: mediaQuerySize.width * 0.7,
-            text: 'Login',
-            onPressed: () {
-              bottomSheet(
-                context: context,
-                widget: const BottomSheetWidget(),
-              );
-              BlocProvider.of<SplashCubit>(context).currentIndex = 1;
-            },
-            buttonColor: const Color(0xFFd1fae5),
-            textColor: kPrimaryColor,
-          ),
-        ],
-      );
-    });
+    return BlocProvider(
+      create: (context) => SplashCubit(),
+      child: BlocBuilder<SplashCubit, SplashStates>(builder: (context, state) {
+        return Column(
+          children: [
+            CustomButtonApp(
+              width: mediaQuerySize.width * 0.7,
+              text: 'Create Account',
+              onPressed: () {
+                bottomSheet(
+                  context: context,
+                  widget: const BottomSheetWidget(),
+                );
+                BlocProvider.of<SplashCubit>(context).currentIndex = 0;
+              },
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomButtonApp(
+              width: mediaQuerySize.width * 0.7,
+              text: 'Login',
+              onPressed: () {
+                bottomSheet(
+                  context: context,
+                  widget: const BottomSheetWidget(),
+                );
+                BlocProvider.of<SplashCubit>(context).currentIndex = 1;
+              },
+              buttonColor: const Color(0xFFd1fae5),
+              textColor: kPrimaryColor,
+            ),
+          ],
+        );
+      }),
+    );
   }
 }

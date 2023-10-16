@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD7o62nf2_K0le8RYKAsj9mDEPOOjI5ilk',
-    appId: '1:855752518878:ios:53b68fa5c6dcbe6575e64f',
+    appId: '1:855752518878:ios:42bbf1836b37a71775e64f',
     messagingSenderId: '855752518878',
     projectId: 'restaurant-app-4350f',
     storageBucket: 'restaurant-app-4350f.appspot.com',
@@ -72,7 +72,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyD7o62nf2_K0le8RYKAsj9mDEPOOjI5ilk',
-    appId: '1:855752518878:ios:6f79cf5571aa0e2f75e64f',
+    appId: '1:855752518878:ios:3053089579f7a03375e64f',
     messagingSenderId: '855752518878',
     projectId: 'restaurant-app-4350f',
     storageBucket: 'restaurant-app-4350f.appspot.com',

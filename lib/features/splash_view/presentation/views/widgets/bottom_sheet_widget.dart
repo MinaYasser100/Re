@@ -38,6 +38,9 @@ class BottomSheetWidget extends StatelessWidget {
               ),
               BlocProvider.of<SplashCubit>(context)
                   .screens[BlocProvider.of<SplashCubit>(context).currentIndex],
+              const SizedBox(
+                height: 200,
+              ),
             ],
           ),
         );

@@ -14,3 +14,5 @@ final class LoginCubitLoginUserfailure extends LoginState {
 
   LoginCubitLoginUserfailure({required this.errorMessage});
 }
+
+class LoginCubitChangeObscurePassword extends LoginState {}

@@ -54,6 +54,12 @@ class _LoginViewState extends State<LoginView> {
                 CustomTextFromField(
                   controller: passwordController,
                   textFromName: 'Password',
+                  icon: BlocProvider.of<LoginCubit>(context).suffixIcon,
+                  onPressedSuffixIcon: () {
+                    BlocProvider.of<LoginCubit>(context).changeShowPassword();
+                  },
+                  obscureText:
+                      BlocProvider.of<LoginCubit>(context).obscurePassword,
                   validator: (p0) {
                     if (p0!.isEmpty) {
                       return 'Please, enter your password !';

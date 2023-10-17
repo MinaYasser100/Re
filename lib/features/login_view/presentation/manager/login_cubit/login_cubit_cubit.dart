@@ -17,7 +17,17 @@ class LoginCubit extends Cubit<LoginState> {
       emit(
         LoginCubitLoginUserfailure(errorMessage: e.toString()),
       );
-      print(e.toString());
     }
+  }
+
+  IconData suffixIcon = Icons.visibility_off_outlined;
+  bool obscurePassword = true;
+
+  void changeShowPassword() {
+    obscurePassword = !obscurePassword;
+    suffixIcon = obscurePassword == true
+        ? Icons.visibility_off_outlined
+        : Icons.visibility_outlined;
+    emit(LoginCubitChangeObscurePassword());
   }
 }

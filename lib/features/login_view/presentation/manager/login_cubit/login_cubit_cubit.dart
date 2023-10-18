@@ -5,6 +5,9 @@ part 'login_cubit_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginCubitInitial());
+  IconData suffixIcon = Icons.visibility_off_outlined;
+  bool obscurePassword = true;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   Future<void> loginUserInApp(
       {required String email, required String password}) async {
@@ -19,9 +22,6 @@ class LoginCubit extends Cubit<LoginState> {
       );
     }
   }
-
-  IconData suffixIcon = Icons.visibility_off_outlined;
-  bool obscurePassword = true;
 
   void changeShowPassword() {
     obscurePassword = !obscurePassword;

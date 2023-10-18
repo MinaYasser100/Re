@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'create_account_state.dart';
@@ -14,5 +15,24 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
         ? Icons.visibility_off_outlined
         : Icons.visibility_outlined;
     emit(CreateAccounCubitChangeObscurePassword());
+  }
+
+  Future<void> createAccountForUser({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
+    emit(CreateAccounCubitRegisterUserloading());
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      emit(CreateAccounCubitRegisterUserSuccess());
+    } catch (e) {
+      emit(
+        CreateAccounCubitRegisterUserFailure(errorMessage: e.toString()),
+      );
+    }
   }
 }

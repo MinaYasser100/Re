@@ -38,7 +38,10 @@ class CreateAccountBlocBulider extends StatelessWidget {
                   controller: nameController,
                   textFromName: 'Full Name',
                   validator: (p0) {
-                    return 'You must enter your name !';
+                    if (p0!.isEmpty) {
+                      return 'You must enter your name !';
+                    }
+                    return null;
                   },
                 ),
                 const SizedBox(height: 8),
@@ -65,7 +68,14 @@ class CreateAccountBlocBulider extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.65,
                   text: 'Registration',
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      BlocProvider.of<CreateAccountCubit>(context)
+                          .createAccountForUser(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        name: nameController.text,
+                      );
+                    }
                   },
                 ),
                 const SizedBox(height: 12),

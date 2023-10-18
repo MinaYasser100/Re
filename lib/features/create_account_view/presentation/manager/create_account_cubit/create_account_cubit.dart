@@ -8,6 +8,7 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
 
   IconData suffixIcon = Icons.visibility_off_outlined;
   bool obscurePassword = true;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   void changeShowPassword() {
     obscurePassword = !obscurePassword;
@@ -34,5 +35,10 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
         CreateAccounCubitRegisterUserFailure(errorMessage: e.toString()),
       );
     }
+  }
+
+  void changeAutovalidateMode() {
+    autovalidateMode = AutovalidateMode.always;
+    emit(CreateAccounCubitChangeAutovalidateMode());
   }
 }

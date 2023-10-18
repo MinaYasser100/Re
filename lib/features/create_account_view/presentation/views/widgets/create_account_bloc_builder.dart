@@ -28,6 +28,8 @@ class CreateAccountBlocBulider extends StatelessWidget {
       builder: (context, state) {
         return Form(
           key: formKey,
+          autovalidateMode:
+              BlocProvider.of<CreateAccountCubit>(context).autovalidateMode,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -75,6 +77,9 @@ class CreateAccountBlocBulider extends StatelessWidget {
                         password: passwordController.text,
                         name: nameController.text,
                       );
+                    } else {
+                      BlocProvider.of<CreateAccountCubit>(context)
+                          .changeAutovalidateMode();
                     }
                   },
                 ),

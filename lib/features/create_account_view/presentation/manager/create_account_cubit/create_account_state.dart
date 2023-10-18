@@ -16,3 +16,6 @@ final class CreateAccounCubitRegisterUserFailure extends CreateAccountState {
 
   CreateAccounCubitRegisterUserFailure({required this.errorMessage});
 }
+
+final class CreateAccounCubitChangeAutovalidateMode
+    extends CreateAccountState {}

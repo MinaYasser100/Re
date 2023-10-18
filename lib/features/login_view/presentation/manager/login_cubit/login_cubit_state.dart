@@ -16,3 +16,5 @@ final class LoginCubitLoginUserfailure extends LoginState {
 }
 
 final class LoginCubitChangeObscurePassword extends LoginState {}
+
+final class LoginCubitChangeAutovalidateMode extends LoginState {}

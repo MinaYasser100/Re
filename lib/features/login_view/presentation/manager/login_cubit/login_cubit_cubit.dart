@@ -30,4 +30,9 @@ class LoginCubit extends Cubit<LoginState> {
         : Icons.visibility_outlined;
     emit(LoginCubitChangeObscurePassword());
   }
+
+  void changeAutovalidateMode() {
+    autovalidateMode = AutovalidateMode.always;
+    emit(LoginCubitChangeAutovalidateMode());
+  }
 }

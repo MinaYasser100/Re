@@ -42,6 +42,8 @@ class _LoginViewState extends State<LoginView> {
         builder: (context, state) {
           return Form(
             key: formKey,
+            autovalidateMode:
+                BlocProvider.of<LoginCubit>(context).autovalidateMode,
             child: Column(
               children: [
                 const SizedBox(height: 25),
@@ -88,6 +90,9 @@ class _LoginViewState extends State<LoginView> {
                       BlocProvider.of<LoginCubit>(context).loginUserInApp(
                           email: emailController.text,
                           password: passwordController.text);
+                    } else {
+                      BlocProvider.of<LoginCubit>(context)
+                          .changeAutovalidateMode();
                     }
                   },
                 ),

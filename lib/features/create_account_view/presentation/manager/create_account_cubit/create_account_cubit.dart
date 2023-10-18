@@ -41,4 +41,12 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
     autovalidateMode = AutovalidateMode.always;
     emit(CreateAccounCubitChangeAutovalidateMode());
   }
+
+  void putUserInformationsInFirebase({
+    required String name,
+    required String email,
+    required String phone,
+    required String userID,
+    required String image,
+  }) {}
 }

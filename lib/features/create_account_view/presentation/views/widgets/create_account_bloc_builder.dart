@@ -15,11 +15,13 @@ class CreateAccountBlocBulider extends StatelessWidget {
     required this.nameController,
     required this.emailController,
     required this.passwordController,
+    required this.phoneController,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameController;
   final TextEditingController emailController;
+  final TextEditingController phoneController;
   final TextEditingController passwordController;
 
   @override
@@ -65,6 +67,17 @@ class CreateAccountBlocBulider extends StatelessWidget {
                         .changeShowPassword();
                   },
                 ),
+                const SizedBox(height: 8),
+                CustomTextFromField(
+                  controller: phoneController,
+                  textFromName: 'Your Phone',
+                  validator: (p0) {
+                    if (p0!.isEmpty) {
+                      return 'You must enter your phone !';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 36),
                 CustomButtonApp(
                   width: MediaQuery.of(context).size.width * 0.65,
@@ -76,6 +89,7 @@ class CreateAccountBlocBulider extends StatelessWidget {
                         email: emailController.text,
                         password: passwordController.text,
                         name: nameController.text,
+                        phone: phoneController.text,
                       );
                     } else {
                       BlocProvider.of<CreateAccountCubit>(context)

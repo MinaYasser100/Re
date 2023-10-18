@@ -16,6 +16,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
@@ -23,6 +24,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
     nameController;
     emailController;
     passwordController;
+    phoneController;
     super.dispose();
   }
 
@@ -35,6 +37,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
         nameController: nameController,
         emailController: emailController,
         passwordController: passwordController,
+        phoneController: phoneController,
       ),
     );
   }

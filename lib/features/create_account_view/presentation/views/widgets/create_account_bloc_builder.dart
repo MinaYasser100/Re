@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_application/core/functions/email_vaildator.dart';
 import 'package:restaurant_application/core/functions/password_vaildator.dart';
+import 'package:restaurant_application/core/functions/show_dialog_to_success.dart';
 import 'package:restaurant_application/core/widgets/cusrom_divider.dart';
 import 'package:restaurant_application/core/widgets/custom_button_app.dart';
 import 'package:restaurant_application/core/widgets/google_button.dart';
@@ -26,7 +27,12 @@ class CreateAccountBlocBulider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateAccountCubit, CreateAccountState>(
+    return BlocConsumer<CreateAccountCubit, CreateAccountState>(
+      listener: (context, state) {
+        if (state is CreateAccounCubitRegisterUserSuccess) {
+          showDialogToSuccess(context);
+        }
+      },
       builder: (context, state) {
         return Form(
           key: formKey,

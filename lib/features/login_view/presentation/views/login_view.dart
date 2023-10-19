@@ -7,6 +7,7 @@ import 'package:restaurant_application/core/widgets/cusrom_divider.dart';
 import 'package:restaurant_application/core/widgets/custom_button_app.dart';
 import 'package:restaurant_application/core/widgets/custom_text_from_field.dart';
 import 'package:restaurant_application/core/widgets/google_button.dart';
+import 'package:restaurant_application/features/forget_password/presentation/views/forget_password_view.dart';
 import 'package:restaurant_application/features/home/presentation/views/howe_view.dart';
 import 'package:restaurant_application/features/login_view/presentation/manager/login_cubit/login_cubit_cubit.dart';
 
@@ -72,7 +73,10 @@ class _LoginViewState extends State<LoginView> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigatorToPage(
+                          context: context, widget: const ForgetPasswordView());
+                    },
                     child: const Text(
                       'Forget Password?',
                       style: TextStyle(

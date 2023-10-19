@@ -17,7 +17,7 @@ class TwoButtonsForBottomSheet extends StatelessWidget {
               onPressed: () {},
               child: const Text(
                 'Create Account',
-                style: Styles.textStyle16,
+                style: Styles.textStyle16PrimaryColor,
               ),
             ),
             SizedBox(
@@ -39,7 +39,8 @@ class TwoButtonsForBottomSheet extends StatelessWidget {
             child: Text(
               'Login',
               textAlign: TextAlign.start,
-              style: Styles.textStyle16.copyWith(color: kLightGreyColor),
+              style: Styles.textStyle16PrimaryColor
+                  .copyWith(color: kLightGreyColor),
             ),
           ),
         ),

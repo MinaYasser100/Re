@@ -27,7 +27,7 @@ class BottomSheetButton extends StatelessWidget {
             onPressed: onPressed,
             child: Text(
               text,
-              style: Styles.textStyle16.copyWith(color: textColor),
+              style: Styles.textStyle16PrimaryColor.copyWith(color: textColor),
             ),
           ),
         ),

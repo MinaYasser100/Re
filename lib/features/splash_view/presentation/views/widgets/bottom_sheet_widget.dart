@@ -11,40 +11,37 @@ class BottomSheetWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SplashCubit(),
-      child: BlocBuilder<SplashCubit, SplashStates>(builder: (context, state) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  itemCount: 2,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => BottomSheetButton(
-                    index: index,
-                    text: BlocProvider.of<SplashCubit>(context).nameText[index],
-                    textColor:
-                        BlocProvider.of<SplashCubit>(context).currentIndex ==
-                                index
-                            ? kPrimaryColor
-                            : kLightGreyColor,
-                    onPressed: () {
-                      BlocProvider.of<SplashCubit>(context).changeIndex(index);
-                    },
-                  ),
+    return BlocBuilder<SplashCubit, SplashStates>(builder: (context, state) {
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+              child: ListView.builder(
+                itemCount: 2,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => BottomSheetButton(
+                  index: index,
+                  text: BlocProvider.of<SplashCubit>(context).nameText[index],
+                  textColor:
+                      BlocProvider.of<SplashCubit>(context).currentIndex ==
+                              index
+                          ? kPrimaryColor
+                          : kLightGreyColor,
+                  onPressed: () {
+                    BlocProvider.of<SplashCubit>(context).changeIndex(index);
+                  },
                 ),
               ),
-              BlocProvider.of<SplashCubit>(context)
-                  .screens[BlocProvider.of<SplashCubit>(context).currentIndex],
-              const SizedBox(
-                height: 200,
-              ),
-            ],
-          ),
-        );
-      }),
-    );
+            ),
+            BlocProvider.of<SplashCubit>(context)
+                .screens[BlocProvider.of<SplashCubit>(context).currentIndex],
+            const SizedBox(
+              height: 200,
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

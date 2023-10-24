@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restaurant_application/core/functions/navigator_to_page.dart';
 import 'package:restaurant_application/core/utils/styles.dart';
 import 'package:restaurant_application/core/widgets/custom_text_from_field.dart';
 import 'package:restaurant_application/features/forget_password/presentation/manager/forget_password_cubit/forget_password_cubit.dart';
+import 'package:restaurant_application/features/forget_password/presentation/views/widgets/succes_find_email.dart';
 import '../../../../../core/functions/email_vaildator.dart';
 import '../../../../../core/widgets/custom_button_app.dart';
 
@@ -28,7 +30,11 @@ class _ForgetPasswordBlocConsumerState
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is ForgetPasswordCheckUserEmailSuccess) {
+          navigatorToPage(context: context, widget: const SuccessFindEmail());
+        }
+      },
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -36,7 +42,7 @@ class _ForgetPasswordBlocConsumerState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 120,
+                height: 60,
               ),
               const Text(
                 'Lupa Password',

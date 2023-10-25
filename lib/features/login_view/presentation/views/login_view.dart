@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_application/core/functions/email_vaildator.dart';
 import 'package:restaurant_application/core/functions/navigator_to_page.dart';
+import 'package:restaurant_application/core/functions/show_dialog_to_error.dart';
 import 'package:restaurant_application/core/utils/constant.dart';
+import 'package:restaurant_application/core/utils/shared_preference.dart';
 import 'package:restaurant_application/core/widgets/cusrom_divider.dart';
 import 'package:restaurant_application/core/widgets/custom_button_app.dart';
 import 'package:restaurant_application/core/widgets/custom_text_from_field.dart';
@@ -35,10 +37,24 @@ class _LoginViewState extends State<LoginView> {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is LoginCubitLoginUserSuccess) {
-            navigatorToPage(context: context, widget: const HomeView());
+            try {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomeView(),
+                ),
+                (route) => false,
+              );
+              await SharePreference.saveData(value: state.userId, key: kUserId);
+              kToken = state.userId;
+            } catch (e) {
+              // ignore: use_build_context_synchronously
+              showDialogToError(context, text: e.toString());
+            }
           }
+          print(kToken);
         },
         builder: (context, state) {
           return Form(
@@ -92,8 +108,9 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       BlocProvider.of<LoginCubit>(context).loginUserInApp(
-                          email: emailController.text,
-                          password: passwordController.text);
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
                     } else {
                       BlocProvider.of<LoginCubit>(context)
                           .changeAutovalidateMode();

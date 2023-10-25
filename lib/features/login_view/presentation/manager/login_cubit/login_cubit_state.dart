@@ -7,7 +7,11 @@ final class LoginCubitInitial extends LoginState {}
 
 final class LoginCubitLoginUserLoading extends LoginState {}
 
-final class LoginCubitLoginUserSuccess extends LoginState {}
+final class LoginCubitLoginUserSuccess extends LoginState {
+  final String userId;
+
+  LoginCubitLoginUserSuccess({required this.userId});
+}
 
 final class LoginCubitLoginUserfailure extends LoginState {
   final String errorMessage;
